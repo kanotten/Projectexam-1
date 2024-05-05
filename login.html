@@ -10,19 +10,18 @@
     <body>
         <header>
             <div class="container">
-                <h1>My Blog</h1>
                 <nav>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="admin-reg.html">register</a></li>
-                        <li><a href="admin-login.html">login</a></li>
+                        <li><a href="register.html">register</a></li>
+                        <li><a href="login.html">login</a></li>
                         <li><a href="creation.html">creation</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
 
-        <form action="/login" method="post">
+<form class="form-container" action="/login" method="post">
             <label for="email">Email:</label><br />
             <input
                 type="text"
@@ -47,12 +46,13 @@
                 required
             /><br /><br />
 
-            <input type="submit" value="Login" />
-            <button
-                onclick="window.location.href='admin-reg.html'; return false;"
-            >
-                Register
-            </button>
+            <input type="submit" id="loginButton" value="Login" />
+            <div class="container signin">
+                <p>
+                    Dont have an account? Register here.
+                    <a href="register.html">Register</a>.
+                </p>
+            </div>
         </form>
     </body>
 </html>
