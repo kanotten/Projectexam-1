@@ -1,5 +1,5 @@
 document
   .getElementById("registerButton")
   .addEventListener("click", function () {
-    window.location.href = "admin-reg.html";
+    window.location.href = "register.html";
   });
