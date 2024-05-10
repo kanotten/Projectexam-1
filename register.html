@@ -22,18 +22,26 @@
             </div>
         </header>
         <main>
-            <form>
+            <form id="registerForm">
                 <div class="form-container">
                     <h1>Register</h1>
-                    <p>Fill inn form to create an account</p>
+                    <p>Fill in the form to create an account</p>
                     <hr />
 
                     <label for="email"><b>Email</b></label>
                     <input
-                        type="text"
+                        type="email"
                         placeholder="Enter Email"
                         name="email"
                         id="email"
+                        required
+                    />
+                    <label for="user-name"><b>user name</b></label>
+                    <input
+                        type="name"
+                        placeholder="Enter name"
+                        name="name"
+                        id="user-name"
                         required
                     />
                     <label for="password"><b>Password</b></label>
@@ -41,7 +49,7 @@
                         type="password"
                         placeholder="Enter Password"
                         name="password"
-                        id="psw"
+                        id="password"
                         required
                     />
                     <label for="repeat-password"><b>Repeat Password</b></label>
@@ -49,7 +57,7 @@
                         type="password"
                         placeholder="Repeat Password"
                         name="repeat-password"
-                        id="repeat-psw"
+                        id="repeat-password"
                         required
                     />
                     <hr />
