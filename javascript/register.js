@@ -28,15 +28,25 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("User registered successfully");
         window.location.href = "login.html";
       } else {
-        const errorMessage = await response.json();
+        // Attempt to parse the error response body as JSON
+        const errorResponse = await response.json();
         if (
-          errorMessage.errors &&
-          errorMessage.errors[0].message === "Profile already exists"
+          errorResponse &&
+          errorResponse.errors &&
+          errorResponse.errors.length > 0
         ) {
-          alert("Email is already in use. Please try with a different email.");
+          const errorMessage = errorResponse.errors[0].message;
+          if (errorMessage === "Profile already exists") {
+            alert(
+              "Email is already in use. Please try with a different email.",
+            );
+          } else {
+            console.error("Error:", errorResponse);
+            alert(`Error: ${errorMessage}`);
+          }
         } else {
-          console.error("Error:", errorMessage);
-          alert(`Error: ${errorMessage}`);
+          console.error("Error:", errorResponse);
+          alert("An unexpected error occurred. Please try again.");
         }
       }
     } catch (error) {
