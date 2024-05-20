@@ -68,9 +68,8 @@ async function checkUserExists(email, password) {
 
     const responseData = await response.json();
     console.log(responseData);
-    const acceessToken = responseData.acceessToken
-    console.log("parsed: " + responseData);
-    console.log("access token2: " + acceessToken);
+    const acceessToken = responseData.data.accessToken
+    console.log("access token: " + acceessToken);
 
     return response.ok;
   } catch (error) {
