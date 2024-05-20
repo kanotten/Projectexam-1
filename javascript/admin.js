@@ -49,25 +49,7 @@ function setupEventListeners() {
     const userExists = await checkUserExists(email, password);
 
     if (userExists) {
-      // Perform login
-      try {
-        const response = await fetch("/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: `email=${encodeURIComponent(email)}&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
-        });
-
-        if (response.ok) {
-          showMessage("Login successful!");
-        } else {
-          showMessage("Login failed. Please try again.");
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        alert("An unexpected error occurred. Please try again.");
-      }
+      window.location.href = 'index.html';
     } else {
       showMessage("User does not exist. Please register first.");
     }
