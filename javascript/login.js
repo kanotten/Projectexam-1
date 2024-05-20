@@ -66,10 +66,19 @@ async function checkUserExists(email, password) {
       body: JSON.stringify({ email, password }),
     });
 
-    const responseData = await response.json();
-    console.log(responseData);
-    const acceessToken = responseData.data.accessToken
-    console.log("access token: " + acceessToken);
+    if (response.ok) {
+      const responseData = await response.json();
+      const accessToken = responseData.data.accessToken; // Fixed typo here
+      console.log("access token: " + accessToken);
+
+      // Store the access token securely (e.g., in session storage)
+      sessionStorage.setItem("accessToken", accessToken);
+
+      // Redirect the user to another page after successful login
+      // window.location.href = "index.html";
+    } else {
+      showMessage("Login failed. Please try again.");
+    }
 
     return response.ok;
   } catch (error) {
