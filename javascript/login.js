@@ -49,7 +49,7 @@ function setupEventListeners() {
     const userExists = await checkUserExists(email, password);
 
     if (userExists) {
-      // window.location.href = "index.html";
+      window.location.href = "index.html";
     } else {
       showMessage("User does not exist. Please register first.");
     }
