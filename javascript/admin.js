@@ -46,7 +46,7 @@ function setupEventListeners() {
     const password = document.getElementById("password").value;
 
     // Check if the user exists
-    const userExists = await checkUserExists(email);
+    const userExists = await checkUserExists(email, password);
 
     if (userExists) {
       // Perform login
@@ -74,14 +74,14 @@ function setupEventListeners() {
   });
 }
 
-async function checkUserExists(email) {
+async function checkUserExists(email, password) {
   try {
-    const response = await fetch("https://v2.api.noroff.dev/auth/register", {
+    const response = await fetch("https://v2.api.noroff.dev/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, password }),
     });
 
     return response.ok;
