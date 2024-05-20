@@ -66,10 +66,81 @@ async function checkUserExists(email, password) {
       body: JSON.stringify({ email, password }),
     });
 
+    if (response.ok) {
+      const responseData = await response.json();
+      const accessToken = responseData.data.accessToken;
+      console.log("access token: " + accessToken);
+
+      // Store the access token in local
+      localStorage.setItem("accessToken", accessToken);
+
+      await createApiKey(accessToken);
+
+      // send to new index
+    } else {
+      showMessage("Login failed. Please try again.");
+    }
+
     return response.ok;
   } catch (error) {
     console.error("Error:", error);
     return false;
+  }
+}
+async function createApiKey(accessToken) {
+  try {
+    const response = await fetch(
+      "https://v2.api.noroff.dev/auth/create-api-key",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`, // Include access token in the Authorization header
+        },
+        body: JSON.stringify({ name: "My API Key" }), // Optionally provide a name for the API key
+      },
+    );
+
+    if (response.ok) {
+      const responseData = await response.json();
+      const apiKey = responseData.data.key;
+      console.log("API Key: " + apiKey);
+
+      // Store the API key in local storage
+      localStorage.setItem("apiKey", apiKey);
+    } else {
+      console.error("Failed to create API key.");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+async function createApiKey(accessToken) {
+  try {
+    const response = await fetch(
+      "https://v2.api.noroff.dev/auth/create-api-key",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`, // Include access token in the Authorization header
+        },
+        body: JSON.stringify({ name: "My API Key" }), // Optionally provide a name for the API key
+      },
+    );
+
+    if (response.ok) {
+      const responseData = await response.json();
+      const apiKey = responseData.data.key;
+      console.log("API Key: " + apiKey);
+
+      // Store the API key in local storage
+      localStorage.setItem("apiKey", apiKey);
+    } else {
+      console.error("Failed to create API key.");
+    }
+  } catch (error) {
+    console.error("Error:", error);
   }
 }
 
