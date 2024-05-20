@@ -49,7 +49,7 @@ function setupEventListeners() {
     const userExists = await checkUserExists(email, password);
 
     if (userExists) {
-      window.location.href = "index.html";
+      // window.location.href = "index.html";
     } else {
       showMessage("User does not exist. Please register first.");
     }
@@ -65,6 +65,12 @@ async function checkUserExists(email, password) {
       },
       body: JSON.stringify({ email, password }),
     });
+
+    const responseData = await response.json();
+    console.log(responseData);
+    const acceessToken = responseData.acceessToken
+    console.log("parsed: " + responseData);
+    console.log("access token2: " + acceessToken);
 
     return response.ok;
   } catch (error) {
