@@ -6,17 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentIndex = 0;
 
   async function displayUserPosts() {
-    const userPosts = JSON.parse(localStorage.getItem("userPosts"));
-    if (userPosts) {
-      renderPosts(userPosts); // Use stored posts
-    } else {
       await fetchAndStoreUserPosts(); // Fetch and store posts if not stored locally
-    }
   }
 
   async function fetchAndStoreUserPosts() {
     try {
       const accessToken = localStorage.getItem("accessToken");
+      const apiKey = localStorage.getItem("apiKey");
       const response = await fetch(
         "https://v2.api.noroff.dev/social/posts/2024",
         {
@@ -24,14 +20,19 @@ document.addEventListener("DOMContentLoaded", () => {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${accessToken}`,
+            "X-Noroff-API-Key": apiKey,
           },
         },
       );
 
       if (response.ok) {
-        const { data: userPosts } = await response.json();
-        localStorage.setItem("userPosts", JSON.stringify(userPosts));
-        renderPosts(userPosts);
+        const responseData = await response.json();
+        console.log(responseData);
+        if (!Array.isArray(responseData.data)) {
+          responseData.data = [responseData.data];
+          console.log(responseData.data);
+        }
+        renderPosts(responseData.data);
       } else {
         console.error("Failed to fetch user posts:", response.statusText);
       }
@@ -42,12 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderPosts(posts) {
     const postContainer = document.querySelector("#blog-posts");
-
-    // Check if posts is an array
-    if (!Array.isArray(posts)) {
-      console.error("Invalid posts data:", posts);
-      return;
-    }
 
     // Clear existing posts
     postContainer.innerHTML = "";
