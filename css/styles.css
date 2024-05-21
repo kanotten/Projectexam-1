@@ -40,22 +40,37 @@ nav ul li a {
 }
 
 .main-content {
-    padding: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin: 20px;
 }
 
-.blog-post {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 20px;
+/* Label for filter */
+label {
+    display: block;
+    margin-bottom: 10px;
 }
 
-.blog-post h3 {
-    margin-top: 0;
+/* Select dropdown for genre filter */
+#genre {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
 }
 
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #333;
-    color: #fff;
+/* Post list container */
+#post-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+/* Individual post item */
+.post-item {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }
