@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentIndex = 0;
 
   async function displayUserPosts() {
-      await fetchAndStoreUserPosts(); // Fetch and store posts if not stored locally
+    await fetchAndStoreUserPosts(); // Fetch and store posts if not stored locally
   }
 
   async function fetchAndStoreUserPosts() {
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderPosts(posts) {
-    const postContainer = document.querySelector("#blog-posts");
+    const postContainer = document.querySelector("#post-list");
 
     // Clear existing posts
     postContainer.innerHTML = "";
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Render each post
     posts.forEach((post, index) => {
       const postElement = document.createElement("div");
-      postElement.className = "blog-post";
+      postElement.className = "post-list";
       postElement.innerHTML = `
         <h3>${post.title}</h3>
         <p>${post.body}</p>
