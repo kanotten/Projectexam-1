@@ -8,22 +8,21 @@ async function getAllPosts() {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
-        "X-Noroff-API-Key": apiKey
+        "X-Noroff-API-Key": apiKey,
       },
     });
 
     if (response.ok) {
       const responseData = await response.json();
-      console.log(responseData)
+      console.log(responseData);
     }
-
   } catch (error) {
     console.error("failed to get all posts:", error);
-    return
+    return;
   }
 }
 
-getAllPosts()
+getAllPosts();
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("blogPostForm");
@@ -48,13 +47,14 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
-          "X-Noroff-API-Key": apiKey
+          "X-Noroff-API-Key": apiKey,
         },
         body: JSON.stringify(postData),
       });
 
       if (response.ok) {
         alert("Blog post created successfully!");
+
         form.reset();
       } else {
         const errorMessage = await response.text();
