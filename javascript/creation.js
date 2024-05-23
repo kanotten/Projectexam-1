@@ -3,15 +3,18 @@ async function getAllPosts() {
   const accessToken = localStorage.getItem("accessToken");
 
   try {
-    const response = await fetch("https://v2.api.noroff.dev/social/posts", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-        "X-Noroff-API-Key": apiKey,
+    const response = await fetch(
+      "https://v2.api.noroff.dev/blog/posts/kenblog/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+          "X-Noroff-API-Key": apiKey,
+        },
       },
-    });
-
+    );
+    //remember to change from get to post.
     if (response.ok) {
       const responseData = await response.json();
       console.log(responseData);

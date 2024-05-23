@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const accessToken = localStorage.getItem("accessToken");
       const apiKey = localStorage.getItem("apiKey");
       const response = await fetch(
-        "https://v2.api.noroff.dev/social/posts/2024",
+        "https://v2.api.noroff.dev/blog/posts/kenblog/",
         {
           method: "GET",
           headers: {
