@@ -3,27 +3,29 @@ async function getAllPosts() {
   const accessToken = localStorage.getItem("accessToken");
 
   try {
-    const response = await fetch("https://v2.api.noroff.dev/social/posts", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-        "X-Noroff-API-Key": apiKey
+    const response = await fetch(
+      "https://v2.api.noroff.dev/blog/posts/kenblog/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+          "X-Noroff-API-Key": apiKey,
+        },
       },
-    });
-
+    );
+    //remember to change from get to post.
     if (response.ok) {
       const responseData = await response.json();
-      console.log(responseData)
+      console.log(responseData);
     }
-
   } catch (error) {
     console.error("failed to get all posts:", error);
-    return
+    return;
   }
 }
 
-getAllPosts()
+getAllPosts();
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("blogPostForm");
@@ -48,13 +50,14 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
-          "X-Noroff-API-Key": apiKey
+          "X-Noroff-API-Key": apiKey,
         },
         body: JSON.stringify(postData),
       });
 
       if (response.ok) {
         alert("Blog post created successfully!");
+
         form.reset();
       } else {
         const errorMessage = await response.text();
