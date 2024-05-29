@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
       postElement.className = "post-list";
       postElement.innerHTML = `
         <h3>${post.title}</h3>
-        <p>${post.body}</p>
+        <img src="${post.media.url}" alt="${post.media.alt}" />
       `;
       postContainer.appendChild(postElement);
     });
