@@ -57,8 +57,14 @@
         </div>
 
         <section class="main-content">
-            <label for="genre">Filter by Genre:</label>
-            <select id="genre"></select>
+            <label for="filter">Filter:</label>
+            <input
+                type="text"
+                id="filter"
+                name="filter"
+                placeholder="Search by tags, date, or title"
+            />
+            <button id="filterButton">Apply Filter</button>
 
             <div id="post-list"></div>
         </section>

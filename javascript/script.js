@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevButton = document.querySelector("#prevButton");
   const slides = document.querySelectorAll(".mySlides");
   const dots = document.querySelectorAll(".dot");
+  const postContainer = document.querySelector("#post-list");
+  let allPosts = []; // To store all posts fetched from the API
+
   let currentIndex = 0;
 
   async function displayUserPosts() {
@@ -32,7 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
           responseData.data = [responseData.data];
           console.log(responseData.data);
         }
-        renderPosts(responseData.data);
+        allPosts = responseData.data; // Store all fetched posts
+        renderPosts(allPosts);
       } else {
         console.error("Failed to fetch user posts:", response.statusText);
       }
@@ -42,8 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderPosts(posts) {
-    const postContainer = document.querySelector("#post-list");
-
     // Clear existing posts
     postContainer.innerHTML = "";
 
@@ -57,6 +59,13 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       postContainer.appendChild(postElement);
     });
+  }
+
+  function filterPostsByTitle(title) {
+    const filteredPosts = allPosts.filter((post) =>
+      post.title.toLowerCase().includes(title.toLowerCase()),
+    );
+    renderPosts(filteredPosts);
   }
 
   displayUserPosts(); // Display user-specific posts on the home page

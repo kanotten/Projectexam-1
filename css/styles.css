@@ -1,3 +1,6 @@
+/* styles.css */
+
+/* Global reset and basic styles */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -39,38 +42,161 @@ nav ul li a {
     text-decoration: none;
 }
 
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+}
+
+.mySlides {
+    display: none;
+    text-align: center;
+}
+
+.mySlides img {
+    width: 100%;
+    height: auto;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+    background-color: #717171;
+}
+
 .main-content {
     padding: 20px;
     border: 1px solid #ccc;
     margin: 20px;
 }
 
-/* Label for filter */
 label {
     display: block;
     margin-bottom: 10px;
 }
 
-/* Select dropdown for genre filter */
-#genre {
-    width: 100%;
+input[type="text"],
+button {
     padding: 8px;
     border-radius: 4px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
 }
 
-/* Post list container */
 #post-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
 }
 
-/* Individual post item */
-.post-item {
+.post-list {
     background-color: #f9f9f9;
     padding: 10px;
     border-radius: 4px;
     border: 1px solid #ccc;
+}
+
+.post-list img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.post-list h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Pagination styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: #f5f5f5;
+    border: none;
+    color: black;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.pagination button.active {
+    background-color: #4caf50;
+    color: white;
+}
+
+.pagination button:hover:not(.active) {
+    background-color: #ddd;
 }
