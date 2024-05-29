@@ -36,6 +36,17 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="image-url">Image URL:</label>
+                    <input type="url" id="image-url" name="image-url" />
+                </div>
+
+                <!-- Add the image-alt input field here -->
+                <div class="form-group">
+                    <label for="image-alt">Image Alt Text:</label>
+                    <input type="text" id="image-alt" name="image-alt" />
+                </div>
+
+                <div class="form-group">
                     <label for="postContent">Content:</label>
                     <textarea
                         id="postContent"
@@ -45,7 +56,9 @@
                     ></textarea>
                 </div>
 
-                <button type="submit">Create Post</button>
+                <div class="form-group">
+                    <button type="submit">Create Post</button>
+                </div>
             </form>
         </div>
 
