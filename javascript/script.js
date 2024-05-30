@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentIndex = 0;
 
   async function displayUserPosts() {
-    await fetchAndStoreUserPosts(); // Fetch and store posts if not stored locally
+    await fetchAndStoreUserPosts();
   }
 
   async function fetchAndStoreUserPosts() {
@@ -51,17 +51,32 @@ document.addEventListener("DOMContentLoaded", () => {
     posts.forEach((post) => {
       const postElement = document.createElement("div");
       postElement.className = "post-list";
-      const imageUrl = post.media?.url || "https://via.placeholder.com/150"; // Use a placeholder if url is missing
-      const imageAlt = post.media?.alt || "No description available"; // Default alt text
+      const imageUrl = post.media?.url || "https://via.placeholder.com/150";
+      const imageAlt = post.media?.alt || "No description available";
       postElement.innerHTML = `
         <h3>${post.title}</h3>
         <img src="${imageUrl}" alt="${imageAlt}" />
       `;
+
+      // Add event listener to make the post clickable
+      postElement.addEventListener("click", () => {
+        const queryParams = new URLSearchParams({
+          id: post.id,
+          title: post.title,
+          content: post.body,
+          author: post.author.name,
+          date: post.created,
+          imageUrl: imageUrl,
+          imageAlt: imageAlt,
+        }).toString();
+        window.location.href = `post/index.html?${queryParams}`;
+      });
+
       postContainer.appendChild(postElement);
     });
   }
 
-  displayUserPosts(); // Display user-specific posts on the home page
+  displayUserPosts();
 
   nextButton.addEventListener("click", () => {
     showSlide(currentIndex + 1);
