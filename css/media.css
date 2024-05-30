@@ -20,7 +20,9 @@
 @media only screen and (max-width: 480px) {
 }
 
+/* Media query for mobile devices */
 @media only screen and (max-width: 600px) {
+    /* Adjust header for mobile */
     header {
         padding: 10px;
     }
@@ -36,33 +38,28 @@
     }
 
     nav {
-        display: none;
+        /* Show navigation menu */
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap; /* Allow items to wrap to next line if needed */
     }
 
-    .menu-toggle {
-        display: block;
-        cursor: pointer;
+    nav ul {
+        list-style-type: none; /* Remove bullet points */
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap; /* Allow items to wrap to next line if needed */
     }
 
-    /* Adjust slider for mobile */
-    .slideshow-container {
-        max-width: 100%;
-        margin: auto;
+    nav ul li {
+        margin-right: 10px; /* Adjust spacing between menu items */
     }
 
-    .mySlides img {
-        width: 100%;
-    }
-
-    .text {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        padding: 10px;
-        text-align: center;
-        font-size: 0.8rem;
+    nav ul li a {
+        padding: 5px 10px; /* Add padding to menu items */
+        font-size: 0.9rem; /* Adjust font size */
+        text-decoration: none;
+        color: black; /* Adjust color */
     }
 }
