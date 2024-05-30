@@ -48,12 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
     postContainer.innerHTML = "";
 
     // Render each post
-    posts.forEach((post, index) => {
+    posts.forEach((post) => {
       const postElement = document.createElement("div");
       postElement.className = "post-list";
+      const imageUrl = post.media?.url || "https://via.placeholder.com/150"; // Use a placeholder if url is missing
+      const imageAlt = post.media?.alt || "No description available"; // Default alt text
       postElement.innerHTML = `
         <h3>${post.title}</h3>
-        <p>${post.body}</p>
+        <img src="${imageUrl}" alt="${imageAlt}" />
       `;
       postContainer.appendChild(postElement);
     });
