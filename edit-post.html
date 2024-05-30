@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Edit Post</title>
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/edit-post.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Edit Post</h1>
+            <form id="edit-post-form">
+                <div class="form-group">
+                    <label for="post-id">Post ID</label>
+                    <input
+                        type="text"
+                        id="post-id"
+                        name="post-id"
+                        class="form-control"
+                        readonly
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="post-title">Title</label>
+                    <input
+                        type="text"
+                        id="post-title"
+                        name="post-title"
+                        class="form-control"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="post-content">Content</label>
+                    <textarea
+                        id="post-content"
+                        name="post-content"
+                        class="form-control"
+                        rows="10"
+                        required
+                    ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="post-image-url">Image URL</label>
+                    <input
+                        type="url"
+                        id="post-image-url"
+                        name="post-image-url"
+                        class="form-control"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="post-image-alt">Image Alt Text</label>
+                    <input
+                        type="text"
+                        id="post-image-alt"
+                        name="post-image-alt"
+                        class="form-control"
+                    />
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        Save Changes
+                    </button>
+                    <button
+                        type="button"
+                        id="delete-post"
+                        class="btn btn-danger"
+                    >
+                        Delete Post
+                    </button>
+                </div>
+            </form>
+        </div>
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 My Blog</p>
+            </div>
+        </footer>
+    </body>
+</html>
