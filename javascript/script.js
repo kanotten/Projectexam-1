@@ -6,15 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentIndex = 0;
 
   async function displayUserPosts() {
-    await fetchAndStoreUserPosts();
-  }
-
-  async function fetchAndStoreUserPosts() {
     try {
       const accessToken = localStorage.getItem("accessToken");
       const apiKey = localStorage.getItem("apiKey");
       const response = await fetch(
-        "https://v2.api.noroff.dev/blog/posts/kenblog/",
+        "https://v2.api.noroff.dev/blog/posts/kenblog/?_sort=created_at:desc&_limit=3",
         {
           method: "GET",
           headers: {
@@ -32,7 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
           responseData.data = [responseData.data];
           console.log(responseData.data);
         }
-        renderPosts(responseData.data);
+        renderSliderPosts(responseData.data); // Render posts in the slider
+        renderPosts(responseData.data); // Render posts under the slider
       } else {
         console.error("Failed to fetch user posts:", response.statusText);
       }
@@ -60,20 +57,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Add event listener to make the post clickable
       postElement.addEventListener("click", () => {
-        const queryParams = new URLSearchParams({
-          id: post.id,
-          title: post.title,
-          content: post.body,
-          author: post.author.name,
-          date: post.created,
-          imageUrl: imageUrl,
-          imageAlt: imageAlt,
-        }).toString();
-        window.location.href = `post/index.html?${queryParams}`;
+        navigateToPostIndex(post);
       });
 
       postContainer.appendChild(postElement);
     });
+  }
+
+  function renderSliderPosts(posts) {
+    slides.forEach((slide, index) => {
+      const post = posts[index];
+      const imageUrl = post.media?.url || "https://via.placeholder.com/150";
+      const imageAlt = post.media?.alt || "No description available";
+      const postTitle = post.title;
+      const postContent = post.body;
+
+      slide.innerHTML = `
+        <div class="numbertext">${index + 1} / ${posts.length}</div>
+        <img src="${imageUrl}" style="width: 100%" alt="${imageAlt}" />
+        <div class="text">
+          <h2>${postTitle}</h2>
+          <p>${postContent}</p>
+        </div>
+      `;
+
+      // Add event listener to make the slide clickable
+      slide.addEventListener("click", () => {
+        navigateToPostIndex(post);
+      });
+    });
+  }
+
+  function navigateToPostIndex(post) {
+    const queryParams = new URLSearchParams({
+      id: post.id,
+      title: post.title,
+      content: post.body,
+      author: post.author.name,
+      date: post.created,
+      imageUrl: post.media?.url || "",
+      imageAlt: post.media?.alt || "",
+    }).toString();
+    window.location.href = `post/index.html?${queryParams}`;
   }
 
   displayUserPosts();
