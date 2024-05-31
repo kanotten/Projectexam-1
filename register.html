@@ -16,10 +16,9 @@
                 <nav>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-
-                        <li><a href="login.html">login</a></li>
-                        <li><a href="post/creation.html">creation</a></li>
-                        <li><a href="post/edit-post.html">edit</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="post/creation.html">Creation</a></li>
+                        <li><a href="post/edit-post.html">Edit</a></li>
                     </ul>
                 </nav>
             </div>
@@ -31,7 +30,7 @@
             <form>
                 <div class="form-container">
                     <h1>Register</h1>
-                    <p>Fill inn form to create an account</p>
+                    <p>Fill in form to create an account</p>
                     <hr />
 
                     <label for="email"><b>Email</b></label>
@@ -40,6 +39,7 @@
                         placeholder="Enter Email"
                         name="email"
                         id="email"
+                        autocomplete="email"
                         required
                     />
                     <label for="name"><b>Name</b></label>
@@ -48,6 +48,7 @@
                         placeholder="Enter Name"
                         name="name"
                         id="name"
+                        autocomplete="name"
                         required
                     />
                     <label for="password"><b>Password</b></label>
@@ -55,17 +56,19 @@
                         type="password"
                         placeholder="Enter Password"
                         name="password"
-                        id="psw"
+                        id="password"
                         required
                     />
+
                     <label for="repeat-password"><b>Repeat Password</b></label>
                     <input
                         type="password"
                         placeholder="Repeat Password"
                         name="repeat-password"
-                        id="repeat-psw"
+                        id="repeat-password"
                         required
                     />
+
                     <hr />
 
                     <p>
@@ -73,12 +76,6 @@
                         <a href="terms.html"> Terms & Privacy</a>.
                     </p>
                     <button type="submit" class="registerbtn">Register</button>
-                </div>
-                <div class="container signin">
-                    <p>
-                        Already have an account?
-                        <a href="login.html">Sign in</a>.
-                    </p>
                 </div>
             </form>
         </main>
@@ -88,7 +85,6 @@
                 <p>&copy; 2024 HotLabs</p>
             </div>
         </footer>
-
         <script src="javascript/register.js"></script>
     </body>
 </html>
