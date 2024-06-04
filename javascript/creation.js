@@ -1,7 +1,4 @@
-// Wait for DOM content to be loaded
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM content loaded");
-
   const form = document.getElementById("blogPostForm");
   if (!form) {
     return;
