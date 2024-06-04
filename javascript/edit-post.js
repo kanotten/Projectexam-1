@@ -44,11 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const postData = await response.json();
         populateForm(postData.data);
       } else {
-        console.error("Failed to load post:", response.statusText);
         alert("Failed to load post. Please check the Post ID and try again.");
       }
     } catch (error) {
-      console.error("Error loading post:", error);
       alert("Error loading post. Please try again.");
     }
   }
@@ -145,16 +143,11 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       if (response.ok) {
-        const responseData = await response.json();
         alert("Post updated successfully!");
-        console.log(responseData);
       } else {
-        const errorData = await response.json();
-        console.error("Failed to update post:", errorData);
         alert("Failed to update post. Please try again.");
       }
     } catch (error) {
-      console.error("Error updating post:", error);
       alert("Error updating post. Please try again.");
     }
   }
@@ -181,11 +174,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Clear the form after deletion
         document.getElementById("edit-post-form").reset();
       } else {
-        console.error("Failed to delete post:", response.statusText);
         alert("Failed to delete post. Please try again.");
       }
     } catch (error) {
-      console.error("Error deleting post:", error);
       alert("Error deleting post. Please try again.");
     }
   }
