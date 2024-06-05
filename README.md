@@ -14,7 +14,7 @@ This is my exam project about creating a blog with all its contents.
 
 - Login
 - Create post / pictures / titles
-- Only customers should be able to log in (block other logins)
+- Only authenticated users should be able to log in (block other logins)
 - Use API for the blog posts
 - Assets and Figma
 
@@ -64,6 +64,13 @@ Main API for the project is provided by Noroff: `https://v2.api.noroff.dev/`. Th
 - POST /auth/login
 
 ---
+
+#### Summary of project:
+
+Creating a functional webpage which can be used as a blog plattform for a company or for private use.
+It contains all the necessary functions for login, creating a user, editing, creating and deleting a post. 
+
+
 
 Still updating!! 
 
