@@ -1,6 +1,7 @@
 # Project Exam - Blog
 
 This is my exam project about creating a blog with all its contents.
+Preview on netlify link: https://hotllabstech.netlify.app
 
 ## Contents
 
